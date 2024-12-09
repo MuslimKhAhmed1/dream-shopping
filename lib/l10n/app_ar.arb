@@ -1,0 +1,33 @@
+{
+  "@@locale": "ar",
+  "appTitle": "تسوق الأحلام",
+  "profileTitle": "الملف الشخصي",
+  "cartEmpty": "سلة التسوق فارغة",
+  "goToOrders": "انتقل إلى الطلبات",
+  "returnHome": "الرجوع إلى المنزل",
+  "browseAsGuest": "تصفح كزائر",
+  "signUp": "التسجيل",
+  "loginTitle": "تسجيل الدخول",
+  "signupTitle": "إنشاء حساب",
+  "loginButton": "تسجيل الدخول",
+  "signupButton": "إنشاء حساب",
+  "email": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "loginLink": "ليس لديك حساب؟ سجل الآن",
+  "signupLink": "لديك حساب بالفعل؟ تسجيل الدخول",
+  "emailError": "يرجى إدخال بريد إلكتروني صالح",
+  "passwordError": "يرجى إدخال كلمة مرور",
+  "loginError": "فشل تسجيل الدخول. حاول مرة اخرى.",
+  "signupSuccess": "تم التسجيل بنجاح!",
+  "ok": "حسناً",
+    "darkMode": "الوضع الداكن",
+    "language": "اللغة",
+    "notifications": "الإشعارات",
+    "supplierAccount": "كشف حساب المورد",
+    "orderHistory": "سجل الطلبات",
+    "rewardsHistory": "سجل المكافآت",
+    "logout": "تسجيل الخروج",
+    "selectLanguage": "اختر اللغة"
+  
+  
+}
