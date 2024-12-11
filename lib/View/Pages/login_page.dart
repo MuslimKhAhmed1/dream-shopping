@@ -124,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                       return null;
                     },
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 5),
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
@@ -141,26 +141,34 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 15),
                   _isLoading
                       ? const CircularProgressIndicator()
                       : ElevatedButton(
                           onPressed: _login,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.grey,
+                            fixedSize: Size(350, 50),
+                            backgroundColor:
+                                const Color.fromARGB(255, 0, 123, 255),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 100, vertical: 15),
+                            textStyle: const TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                            // padding: const EdgeInsets.symmetric(
+                            //     horizontal: 100, vertical: 15),
                           ),
                           child: Text(
                             S.of(context).loginButton,
                             style: const TextStyle(color: Colors.white),
                           ),
                         ),
-                  const SizedBox(height: 20),
-                  TextButton(
+                  const SizedBox(height: 30),
+                  ElevatedButton(
+                    style: const ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(
+                      Color.fromARGB(155, 92, 182, 255),
+                    )),
                     onPressed: () {
                       Navigator.pushNamed(context, '/');
                     },

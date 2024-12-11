@@ -1,15 +1,18 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dream_shopping/View/Pages/Brands_page.dart';
 import 'package:dream_shopping/View/Pages/detailBrand_page.dart';
+import 'package:dream_shopping/View/main.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
-      backgroundColor: Colors.white, // Light mode background color
-
+      backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,26 +74,33 @@ class HomePage extends StatelessWidget {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  _brandCard('assets/gusto.jpg', 'Gusto'),
-                  _brandCard('assets/zer.png', 'ZER'),
-                  _brandCard('assets/sor.jpg', 'SOR'),
+                  brandCard('assets/gusto.jpg', 'Gusto'),
+                  brandCard('assets/zer.png', 'ZER'),
+                  brandCard('assets/sor.jpg', 'SOR'),
                 ],
               ),
             ),
             const SizedBox(height: 20),
             // Categories Section
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Categories',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  Text(
-                    'See More',
-                    style: TextStyle(fontSize: 16, color: Colors.red),
+                  TextButton(
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BrandsPage(),
+                        )),
+                    child: const Text(
+                      'See More',
+                      style: TextStyle(fontSize: 16, color: Colors.red),
+                    ),
                   ),
                 ],
               ),
@@ -129,7 +139,7 @@ class HomePage extends StatelessWidget {
   }
 
   // Brand Card Widget
-  Widget _brandCard(String imageUrl, String name) {
+  Widget brandCard(String imageUrl, String name) {
     return Column(
       children: [
         Container(
@@ -169,7 +179,8 @@ class HomePage extends StatelessWidget {
         children: [
           Image.asset(imageUrl, width: 50, height: 50),
           const SizedBox(height: 10),
-          Text(title, style: const TextStyle(fontSize: 14)),
+          Text(title,
+              style: const TextStyle(fontSize: 14, color: Colors.black)),
         ],
       ),
     );

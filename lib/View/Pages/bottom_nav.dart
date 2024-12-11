@@ -37,7 +37,7 @@ class _BottomNavState extends State<BottomNav> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.GoldCol,
         elevation: 0,
         title: const Text(
           'DreamShopping',
@@ -77,7 +77,7 @@ class _BottomNavState extends State<BottomNav> {
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
         onTap: onItemTapped,
-        selectedItemColor: AppColors.buttonColor,
+        selectedItemColor: AppColors.GoldCol,
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),

@@ -76,7 +76,7 @@ class S {
         args: [],
       );
   String get email => Intl.message(
-        'Sign Up',
+        'Email',
         name: 'signupTitle',
         desc: '',
         args: [],
@@ -88,7 +88,7 @@ class S {
         args: [],
       );
   String get password => Intl.message(
-        'Sign Up',
+        'Password',
         name: 'signupTitle',
         desc: '',
         args: [],
@@ -156,7 +156,7 @@ class S {
   String get rewardsHistory => Intl.message("rewards History");
   String get logout => Intl.message("orderHistory");
   String get selectLanguage => Intl.message("orderHistory");
-  String get forgotPassword => Intl.message("forget passsword");
+  String get forgotPassword => Intl.message("forget passsword? ");
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,4 +1,7 @@
+import 'package:dream_shopping/Model/colors.dart';
+import 'package:dream_shopping/View/main.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -22,6 +25,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -158,16 +162,18 @@ class _SignUpPageState extends State<SignUpPage> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey,
+                      textStyle: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                      fixedSize: const Size(350, 50),
+                      backgroundColor: AppColors.lblueCol,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 100, vertical: 15),
                     ),
                     child: const Text(
                       'Sign up',
-                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -177,9 +183,12 @@ class _SignUpPageState extends State<SignUpPage> {
                       Navigator.pushNamed(
                           context, '/login'); // Navigate to Login Page
                     },
-                    child: const Text(
+                    child: Text(
                       'Already Have an account',
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(
+                          color: themeProvider.isDarkMode
+                              ? Colors.white
+                              : Colors.black),
                     ),
                   ),
                 ],

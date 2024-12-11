@@ -1,3 +1,4 @@
+import 'package:dream_shopping/View/Pages/Brands_page.dart';
 import 'package:dream_shopping/View/Pages/login_page.dart';
 import 'package:dream_shopping/View/Pages/signup_page.dart';
 import 'package:flutter/material.dart';
@@ -29,13 +30,14 @@ class MyApp extends StatelessWidget {
       themeMode: themeProvider.isDarkMode
           ? ThemeMode.dark
           : ThemeMode.light, // Toggle theme
-      // home: const BottomNav(),
+
       initialRoute: '/login',
       routes: {
         '/': (context) => BottomNav(),
         '/login': (context) => LoginPage(),
         '/signup': (context) => SignUpPage(),
         '/profile': (context) => LoginPage(),
+        '/brands': (context) => BrandsPage(),
       },
       supportedLocales: const [
         Locale('en', ''), // English
