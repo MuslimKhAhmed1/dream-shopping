@@ -1,4 +1,6 @@
-import 'package:dream_shopping/View/main.dart';
+import 'package:dream_shopping/Model/colors.dart';
+import 'package:dream_shopping/Controller/themeProvider.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../generated/l10n.dart';
@@ -55,7 +57,9 @@ class _LoginPageState extends State<LoginPage> {
     final themeProvider = Provider.of<ThemeProvider>(context);
 
     return Scaffold(
-      backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
+      backgroundColor: themeProvider.isDarkMode
+          ? Colors.black
+          : Color.fromARGB(255, 255, 251, 235),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
@@ -67,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   const SizedBox(height: 40),
                   Text(
-                    'Logo',
+                    'Login',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -147,30 +151,32 @@ class _LoginPageState extends State<LoginPage> {
                       : ElevatedButton(
                           onPressed: _login,
                           style: ElevatedButton.styleFrom(
-                            fixedSize: Size(350, 50),
-                            backgroundColor:
-                                const Color.fromARGB(255, 0, 123, 255),
+                            fixedSize: const Size(350, 50),
+                            backgroundColor: AppColors.GoldCol,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                             ),
                             textStyle: const TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
-                            // padding: const EdgeInsets.symmetric(
-                            //     horizontal: 100, vertical: 15),
                           ),
                           child: Text(
                             S.of(context).loginButton,
-                            style: const TextStyle(color: Colors.white),
+                            style: TextStyle(
+                              color: themeProvider.isDarkMode
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
                           ),
                         ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 50),
                   ElevatedButton(
                     style: const ButtonStyle(
+                        fixedSize: WidgetStatePropertyAll(Size(170, 50)),
                         backgroundColor: WidgetStatePropertyAll(
-                      Color.fromARGB(155, 92, 182, 255),
-                    )),
+                          Color.fromARGB(255, 244, 236, 149),
+                        )),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/');
+                      Navigator.pushReplacementNamed(context, '/');
                     },
                     child: Text(
                       "Browse as Guest",
@@ -181,7 +187,9 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(
+                    height: 70,
+                  ),
                   TextButton(
                     onPressed: () {
                       Navigator.pushNamed(context, '/signup');

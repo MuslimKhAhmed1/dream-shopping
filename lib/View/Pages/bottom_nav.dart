@@ -1,4 +1,5 @@
 import 'package:dream_shopping/View/Pages/login_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dream_shopping/View/Pages/cart_page.dart';
 import 'package:dream_shopping/View/Pages/home_page.dart';
@@ -21,7 +22,7 @@ class _BottomNavState extends State<BottomNav> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    const HomePage(),
+    HomePage(),
     OrderPage(),
     CartPage(),
     RewardsPage(),
@@ -37,7 +38,7 @@ class _BottomNavState extends State<BottomNav> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.GoldCol,
+        backgroundColor: const Color.fromARGB(255, 255, 230, 0),
         elevation: 0,
         title: const Text(
           'DreamShopping',
@@ -55,7 +56,8 @@ class _BottomNavState extends State<BottomNav> {
                 builder: (context) => ProfilePage(),
               ),
             ),
-            icon: const Icon(Icons.person, color: Colors.black),
+            icon: const Icon(CupertinoIcons.person_alt_circle,
+                color: Colors.black),
           ),
           const SizedBox(width: 10),
           IconButton(
@@ -65,10 +67,10 @@ class _BottomNavState extends State<BottomNav> {
                 builder: (context) => const LoginPage(),
               ),
             ),
-            icon: const Icon(Icons.notifications, color: Colors.black),
+            icon: const Icon(CupertinoIcons.bell, color: Colors.black),
           ),
           const SizedBox(width: 10),
-          const Icon(Icons.account_balance_wallet, color: Colors.black),
+          const Icon(Icons.wallet, color: Colors.black),
           const SizedBox(width: 10),
         ],
       ),

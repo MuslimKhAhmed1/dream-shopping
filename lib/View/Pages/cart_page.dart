@@ -1,22 +1,31 @@
+import 'package:dream_shopping/Controller/themeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:dream_shopping/View/Pages/bottom_nav.dart';
+import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
+      backgroundColor: themeProvider.isDarkMode
+          ? Colors.black
+          : const Color.fromARGB(255, 255, 251, 240),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Center(
+          Center(
             child: Text(
               'Your cart is empty',
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.black54,
+                color: themeProvider.isDarkMode
+                    ? Colors.black
+                    : const Color.fromARGB(255, 255, 251, 240),
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -41,8 +50,7 @@ class CartPage extends StatelessWidget {
               const SizedBox(width: 10),
               ElevatedButton(
                 onPressed: () {
-                  bottomNavKey.currentState
-                      ?.onItemTapped(0); // Navigate to Home
+                  bottomNavKey.currentState?.onItemTapped(0);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orangeAccent,
@@ -50,7 +58,13 @@ class CartPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
-                child: const Text('Return Home'),
+                child: Text(
+                  'Return Home',
+                  style: TextStyle(
+                    color:
+                        themeProvider.isDarkMode ? Colors.black : Colors.white,
+                  ),
+                ),
               ),
             ],
           ),

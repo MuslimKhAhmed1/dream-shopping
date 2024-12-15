@@ -1,5 +1,5 @@
 import 'package:dream_shopping/Model/colors.dart';
-import 'package:dream_shopping/View/main.dart';
+import 'package:dream_shopping/Controller/themeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +27,9 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.isDarkMode
+          ? Colors.black
+          : Color.fromARGB(255, 255, 251, 235),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
@@ -43,7 +46,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 40),
                   // First/Last Name Field
                   TextFormField(
                     controller: _nameController,
@@ -64,8 +67,10 @@ class _SignUpPageState extends State<SignUpPage> {
                   const SizedBox(height: 20),
                   // Email Field
                   TextFormField(
+                    cursorErrorColor: AppColors.GoldCol,
                     controller: _emailController,
                     decoration: InputDecoration(
+                      errorStyle: TextStyle(color: AppColors.GoldCol),
                       prefixIcon: const Icon(Icons.email),
                       labelText: 'Email',
                       border: OutlineInputBorder(
@@ -163,20 +168,23 @@ class _SignUpPageState extends State<SignUpPage> {
                     },
                     style: ElevatedButton.styleFrom(
                       textStyle: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
+                          fontSize: 18, fontWeight: FontWeight.bold),
                       fixedSize: const Size(350, 50),
-                      backgroundColor: AppColors.lblueCol,
+                      backgroundColor: AppColors.GoldCol,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
-                    child: const Text(
+                    child: Text(
                       'Sign up',
+                      style: TextStyle(
+                        color: themeProvider.isDarkMode
+                            ? Colors.white
+                            : Colors.black,
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 50),
                   // Already have an account link
                   TextButton(
                     onPressed: () {

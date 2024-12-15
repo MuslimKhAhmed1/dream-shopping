@@ -1,10 +1,18 @@
 import 'package:dream_shopping/View/Pages/bottom_nav.dart';
+import 'package:dream_shopping/Controller/themeProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class OrderPage extends StatelessWidget {
+  const OrderPage({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.isDarkMode
+          ? Colors.black
+          : const Color.fromARGB(255, 255, 251, 240),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

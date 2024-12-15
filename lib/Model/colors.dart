@@ -4,6 +4,7 @@ class AppColors {
   static const Color buttonColor = Color(0xFF1e56c3);
   static const Color widgetBackground = Color(0xFFecdcf4);
   static const Color textFieldBackground = Color(0xFFf3ecde);
+  static const Color background = Color.fromARGB(255, 255, 251, 240);
   static const Color darkModeBackground = Color(0xFF272932);
   static const Color lightModeBackground = Colors.white;
   static const Color lblueCol = Color.fromARGB(255, 0, 123, 255);

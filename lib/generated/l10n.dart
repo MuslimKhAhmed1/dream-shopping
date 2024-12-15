@@ -107,7 +107,7 @@ class S {
       );
 
   String get signupLink => Intl.message(
-        'Login',
+        "Don't have an Account",
         name: 'signupTitle',
         desc: '',
         args: [],

@@ -41,6 +41,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   intl_utils: ^2.8.7
   carousel_slider: ^5.0.0
+  smooth_page_indicator: ^1.2.0+3
+  page_view_dot_indicator: ^2.3.0
 
 dev_dependencies:
   flutter_test:

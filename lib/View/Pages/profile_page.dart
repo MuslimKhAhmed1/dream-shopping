@@ -1,9 +1,16 @@
-import 'package:dream_shopping/View/main.dart';
+import 'package:dream_shopping/View/Pages/extrascreens/notification.dart';
+import 'package:dream_shopping/View/Pages/extrascreens/orderHistory.dart';
+import 'package:dream_shopping/View/Pages/extrascreens/rewardHistory.dart';
+import 'package:dream_shopping/View/Pages/extrascreens/supplierAccount.dart';
+import 'package:dream_shopping/View/Pages/order_page.dart';
+import 'package:dream_shopping/Controller/themeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../generated/l10n.dart'; // Import the localization file
 
 class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -21,7 +28,9 @@ class _ProfilePageState extends State<ProfilePage> {
             color: themeProvider.isDarkMode ? Colors.white : Colors.black,
           ),
         ),
-        backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
+        backgroundColor: themeProvider.isDarkMode
+            ? Colors.black
+            : Color.fromARGB(255, 255, 251, 240),
         iconTheme: IconThemeData(
           color: themeProvider.isDarkMode ? Colors.white : Colors.black,
         ),
@@ -31,14 +40,19 @@ class _ProfilePageState extends State<ProfilePage> {
         children: [
           // Profile Header
           Container(
-            padding: const EdgeInsets.all(16.0),
-            color: themeProvider.isDarkMode
-                ? Colors.grey[900]
-                : Colors.grey[200], // Adjust based on theme
+            padding: const EdgeInsets.all(15.0),
+            decoration: BoxDecoration(
+                color: themeProvider.isDarkMode
+                    ? Colors.grey[900]
+                    : Colors.grey[200],
+                borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20))),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CircleAvatar(
-                  radius: 30,
+                  radius: 50,
                   backgroundColor: Colors.grey.shade300,
                   child: Text(
                     'G',
@@ -95,31 +109,50 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
 
                 // Notifications
-                _buildListTile(
-                  context,
-                  icon: Icons.notifications,
-                  title: S.of(context).notifications,
-                ),
+                _buildListTile(context,
+                    icon: Icons.notifications,
+                    title: S.of(context).notifications, onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const NotificationScreen(),
+                      ));
+                }),
 
                 // Supplier Account Statement
-                _buildListTile(
-                  context,
-                  icon: Icons.account_balance_wallet,
-                  title: S.of(context).supplierAccount,
-                ),
+                _buildListTile(context,
+                    icon: Icons.account_balance_wallet,
+                    title: S.of(context).supplierAccount, onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SupplierAccount(),
+                      ));
+                }),
 
                 // Order History
-                _buildListTile(
-                  context,
-                  icon: Icons.history,
-                  title: S.of(context).orderHistory,
-                ),
+                _buildListTile(context,
+                    icon: Icons.history,
+                    title: S.of(context).orderHistory, onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const OrderdHistory(),
+                      ));
+                }),
 
                 // Rewards History
                 _buildListTile(
                   context,
                   icon: Icons.card_giftcard,
                   title: S.of(context).rewardsHistory,
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RewardHistory(),
+                        ));
+                  },
                 ),
 
                 // Logout/Login
@@ -182,21 +215,21 @@ class _ProfilePageState extends State<ProfilePage> {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              _languageOption(
-                context,
-                locale: Locale('en'),
-                title: 'English',
-              ),
-              _languageOption(
-                context,
-                locale: Locale('ku'),
-                title: 'Kurdish',
-              ),
-              _languageOption(
-                context,
-                locale: Locale('ar'),
-                title: 'Arabic',
-              ),
+              _languageOption(context,
+                  locale: Locale('en'),
+                  title: 'English',
+                  img:
+                      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Flag_of_the_United_States.png/1200px-Flag_of_the_United_States.png"),
+              _languageOption(context,
+                  locale: Locale('ku'),
+                  title: 'Kurdish',
+                  img:
+                      "https://upload.wikimedia.org/wikipedia/commons/d/d2/Flag_of_Kurdistan.png"),
+              _languageOption(context,
+                  locale: Locale('ar'),
+                  title: 'Arabic',
+                  img:
+                      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Flag_of_Iraq.svg/1200px-Flag_of_Iraq.svg.png"),
             ],
           ),
         );
@@ -205,10 +238,15 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget _languageOption(BuildContext context,
-      {required Locale locale, required String title}) {
+      {required Locale locale, required String title, required String img}) {
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
 
     return ListTile(
+      leading: Image.network(
+        img,
+        height: 35,
+        width: 45,
+      ),
       title: Text(
         title,
         style: TextStyle(
