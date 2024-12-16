@@ -1,4 +1,6 @@
-import 'package:dream_shopping/View/Pages/login_page.dart';
+import 'package:dream_shopping/Controller/themeProvider.dart';
+import 'package:dream_shopping/View/Pages/extrascreens/accountStatement.dart';
+import 'package:dream_shopping/View/Pages/extrascreens/notification.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dream_shopping/View/Pages/cart_page.dart';
@@ -6,13 +8,15 @@ import 'package:dream_shopping/View/Pages/home_page.dart';
 import 'package:dream_shopping/View/Pages/order_page.dart';
 import 'package:dream_shopping/View/Pages/rewards_page.dart';
 import 'package:dream_shopping/View/Pages/profile_page.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import '../../Model/colors.dart';
 
 // Global key to access _BottomNavState
 final GlobalKey<_BottomNavState> bottomNavKey = GlobalKey();
 
 class BottomNav extends StatefulWidget {
-  const BottomNav({Key? key}) : super(key: key);
+  const BottomNav({super.key});
 
   @override
   _BottomNavState createState() => _BottomNavState();
@@ -23,8 +27,8 @@ class _BottomNavState extends State<BottomNav> {
 
   final List<Widget> _pages = [
     HomePage(),
-    OrderPage(),
-    CartPage(),
+    const OrderPage(),
+    const CartPage(),
     RewardsPage(),
   ];
 
@@ -36,10 +40,17 @@ class _BottomNavState extends State<BottomNav> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
+      backgroundColor: themeProvider.isDarkMode
+          ? const Color.fromARGB(255, 255, 251, 240)
+          : AppColors.GoldCol,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 255, 230, 0),
-        elevation: 0,
+        // backgroundColor: const Color.fromARGB(255, 255, 230, 0),
+        backgroundColor: Colors.transparent,
+
+        elevation: 2,
         title: const Text(
           'DreamShopping',
           style: TextStyle(
@@ -53,7 +64,7 @@ class _BottomNavState extends State<BottomNav> {
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ProfilePage(),
+                builder: (context) => const ProfilePage(),
               ),
             ),
             icon: const Icon(CupertinoIcons.person_alt_circle,
@@ -64,13 +75,21 @@ class _BottomNavState extends State<BottomNav> {
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const LoginPage(),
+                builder: (context) => const NotificationScreen(),
               ),
             ),
             icon: const Icon(CupertinoIcons.bell, color: Colors.black),
           ),
           const SizedBox(width: 10),
-          const Icon(Icons.wallet, color: Colors.black),
+          IconButton(
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Accountstatement(),
+              ),
+            ),
+            icon: const Icon(Icons.wallet, color: Colors.black),
+          ),
           const SizedBox(width: 10),
         ],
       ),

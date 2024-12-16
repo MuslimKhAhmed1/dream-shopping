@@ -12,6 +12,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
+  // the brand card
   brandCard(String imageUrl, String name) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -58,7 +59,6 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Banner Section
             CarouselSlider(
               carouselController: _carouselController,
               options: CarouselOptions(

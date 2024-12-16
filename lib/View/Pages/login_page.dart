@@ -176,14 +176,16 @@ class _LoginPageState extends State<LoginPage> {
                           Color.fromARGB(255, 244, 236, 149),
                         )),
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/');
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        '/',
+                        (route) => false,
+                      );
                     },
-                    child: Text(
+                    child: const Text(
                       "Browse as Guest",
                       style: TextStyle(
-                        color: themeProvider.isDarkMode
-                            ? Colors.white
-                            : Colors.black,
+                        color: Colors.black,
                       ),
                     ),
                   ),

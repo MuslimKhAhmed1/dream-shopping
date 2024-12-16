@@ -1,3 +1,4 @@
+import 'package:dream_shopping/Controller/controller.dart';
 import 'package:dream_shopping/View/Pages/Brands_page.dart';
 import 'package:dream_shopping/View/Pages/login_page.dart';
 import 'package:dream_shopping/View/Pages/signup_page.dart';
@@ -10,8 +11,11 @@ import 'generated/l10n.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => ThemeProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CounterProvider()),
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+      ],
       child: const MyApp(),
     ),
   );

@@ -1,9 +1,10 @@
+import 'package:dream_shopping/Model/colors.dart';
 import 'package:dream_shopping/View/Pages/extrascreens/notification.dart';
 import 'package:dream_shopping/View/Pages/extrascreens/orderHistory.dart';
 import 'package:dream_shopping/View/Pages/extrascreens/rewardHistory.dart';
 import 'package:dream_shopping/View/Pages/extrascreens/supplierAccount.dart';
-import 'package:dream_shopping/View/Pages/order_page.dart';
 import 'package:dream_shopping/Controller/themeProvider.dart';
+import 'package:dream_shopping/View/Pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../generated/l10n.dart'; // Import the localization file
@@ -21,16 +22,18 @@ class _ProfilePageState extends State<ProfilePage> {
     final themeProvider = Provider.of<ThemeProvider>(context);
 
     return Scaffold(
+      backgroundColor: themeProvider.isDarkMode
+          ? Colors.black
+          : Color.fromARGB(255, 255, 251, 240),
       appBar: AppBar(
+        backgroundColor: AppColors.GoldCol,
+        centerTitle: true,
         title: Text(
           S.of(context).profileTitle, // Localized profile title
-          style: TextStyle(
-            color: themeProvider.isDarkMode ? Colors.white : Colors.black,
+          style: const TextStyle(
+            color: Colors.black,
           ),
         ),
-        backgroundColor: themeProvider.isDarkMode
-            ? Colors.black
-            : Color.fromARGB(255, 255, 251, 240),
         iconTheme: IconThemeData(
           color: themeProvider.isDarkMode ? Colors.white : Colors.black,
         ),
@@ -160,6 +163,15 @@ class _ProfilePageState extends State<ProfilePage> {
                   context,
                   icon: Icons.login,
                   title: S.of(context).logout,
+                  onTap: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
                 ),
               ],
             ),

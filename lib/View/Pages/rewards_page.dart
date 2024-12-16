@@ -1,4 +1,5 @@
 import 'package:dream_shopping/Controller/themeProvider.dart';
+import 'package:dream_shopping/View/Pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -53,27 +54,38 @@ class RewardsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
       child: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
-              'Login and order to earn points',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextButton(
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LoginPage(),
+                  ),
+                  (route) => false,
+                );
+              },
+              child: const Text(
+                'Login and order to earn points',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
               ),
             ),
           ),
-          RewardCard(
+          const RewardCard(
             points: 0,
             totalPoints: 150,
             title: "AirPod",
             imagePath: 'assets/airpod.png',
           ),
           const SizedBox(height: 20),
-          RewardCard(
+          const RewardCard(
             points: 0,
             totalPoints: 200,
             title: 'Vacuum Cleaner',

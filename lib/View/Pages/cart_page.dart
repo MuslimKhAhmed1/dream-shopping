@@ -23,9 +23,7 @@ class CartPage extends StatelessWidget {
               'Your cart is empty',
               style: TextStyle(
                 fontSize: 18,
-                color: themeProvider.isDarkMode
-                    ? Colors.black
-                    : const Color.fromARGB(255, 255, 251, 240),
+                color: themeProvider.isDarkMode ? Colors.white : Colors.black,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -45,7 +43,13 @@ class CartPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
-                child: const Text('Go to Orders'),
+                child: Text(
+                  'Go to Orders',
+                  style: TextStyle(
+                    color:
+                        themeProvider.isDarkMode ? Colors.black : Colors.white,
+                  ),
+                ),
               ),
               const SizedBox(width: 10),
               ElevatedButton(

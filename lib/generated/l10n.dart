@@ -154,7 +154,7 @@ class S {
       );
   String get orderHistory => Intl.message("orderHistory");
   String get rewardsHistory => Intl.message("rewards History");
-  String get logout => Intl.message("orderHistory");
+  String get logout => Intl.message("Logout");
   String get selectLanguage => Intl.message("orderHistory");
   String get forgotPassword => Intl.message("forget passsword? ");
 }

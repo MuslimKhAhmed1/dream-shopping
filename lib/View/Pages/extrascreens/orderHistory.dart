@@ -1,3 +1,4 @@
+import 'package:dream_shopping/Model/colors.dart';
 import 'package:dream_shopping/View/Pages/bottom_nav.dart';
 import 'package:dream_shopping/main.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class OrderdHistory extends StatelessWidget {
       backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
       appBar: AppBar(
         centerTitle: true,
+        backgroundColor: AppColors.GoldCol,
         title: const Text("Orderd History"),
       ),
       body: Center(
